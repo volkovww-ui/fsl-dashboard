@@ -9,6 +9,13 @@ cd "$(dirname "$0")"
 echo ""
 echo "===== $(date -u +'%Y-%m-%d %H:%M:%SZ') ====="
 
+# Подгрузить env переменные (KIE_KEY, OPENROUTER_KEY, LPTRACKER_*, GOOGLE_SA_JSON)
+if [[ -f .env ]]; then
+    set -a
+    source .env
+    set +a
+fi
+
 # 1. Подтянуть свежий manual-input.json если Виталий правил
 git pull --rebase origin main || {
     echo "⚠ git pull --rebase упал, пробуем reset --hard"
