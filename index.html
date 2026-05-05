@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ФСЛ — Дашборд спринта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #1A1A1A;
+  --copper: #B87333;
+  --copper-dark: #8F5523;
+  --copper-light: #F4E1CC;
+  --cream: #F8F4ED;
+  --cream-dark: #ECE5D5;
+  --green: #2D7A3E;
+  --green-light: #E1F0E4;
+  --yellow: #D4A017;
+  --yellow-light: #FCF4DC;
+  --red: #C44536;
+  --red-light: #FCE5E1;
+  --grey-100: #EEE9DF;
+  --grey-300: #BFB7A6;
+  --grey-500: #786E5A;
+  --grey-700: #3D3527;
+  --shadow: 0 1px 3px rgba(26,26,26,.08), 0 4px 14px rgba(26,26,26,.05);
+  --shadow-lg: 0 6px 24px rgba(26,26,26,.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--black);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 80px;
+}
+h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.2; color: var(--black); }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--black) 0%, #2A1F12 100%);
+  color: var(--cream);
+  padding: 56px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute; top: -120px; right: -80px;
+  width: 460px; height: 460px;
+  background: radial-gradient(circle, rgba(184,115,51,.30), transparent 70%);
+  pointer-events: none;
+}
+.hero h1 { font-size: 42px; margin-bottom: 6px; color: var(--cream); letter-spacing: -0.5px; }
+.hero .subtitle { color: var(--copper); font-size: 18px; margin-bottom: 28px; font-weight: 500; }
+.hero-meta {
+  display: flex; gap: 28px; flex-wrap: wrap; align-items: center;
+  font-size: 14px; color: rgba(248,244,237,.7);
+}
+.hero-meta span strong { color: var(--copper); font-weight: 600; }
+.hero-target {
+  display: inline-flex; align-items: baseline; gap: 14px;
+  background: rgba(255,255,255,.08); padding: 16px 24px; border-radius: 14px;
+  border: 1px solid rgba(184,115,51,.35); margin-top: 24px;
+}
+.hero-target .lbl { color: rgba(248,244,237,.7); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+.hero-target .val { color: var(--copper); font-size: 28px; font-weight: 700; font-family: 'Playfair Display'; }
+
+/* PROGRESS BAR */
+.progress-wrap { margin-top: 24px; max-width: 720px; }
+.progress-label { display: flex; justify-content: space-between; font-size: 13px; color: rgba(248,244,237,.8); margin-bottom: 8px; }
+.progress-bar { background: rgba(255,255,255,.10); height: 14px; border-radius: 8px; overflow: hidden; position: relative; }
+.progress-fill { background: linear-gradient(90deg, var(--copper), var(--yellow)); height: 100%; transition: width .8s ease; }
+
+/* KPI BAR */
+.kpi-bar {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  margin: -44px auto 36px; position: relative; z-index: 2;
+  max-width: 1180px; padding: 0 24px;
+}
+.kpi-card {
+  background: white; padding: 22px 24px; border-radius: 14px;
+  box-shadow: var(--shadow); border-top: 4px solid var(--copper);
+}
+.kpi-card .num { font-size: 30px; font-weight: 700; color: var(--black); font-family: 'Playfair Display'; line-height: 1.1; }
+.kpi-card .lbl { font-size: 12px; color: var(--grey-500); text-transform: uppercase; letter-spacing: .05em; margin-top: 6px; }
+.kpi-card .sub { font-size: 13px; color: var(--grey-500); margin-top: 4px; }
+.kpi-card.green { border-top-color: var(--green); }
+.kpi-card.yellow { border-top-color: var(--yellow); }
+.kpi-card.red { border-top-color: var(--red); }
+
+/* TABS */
+.tabs-wrap {
+  background: var(--cream); border-bottom: 1px solid var(--grey-100);
+  position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 8px rgba(26,26,26,.04);
+}
+.tabs {
+  display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; max-width: 1180px; margin: 0 auto; padding: 0 24px;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  background: none; border: none; padding: 16px 18px; font-size: 14px;
+  color: var(--grey-500); font-weight: 500; cursor: pointer; white-space: nowrap;
+  border-bottom: 3px solid transparent; transition: all .2s;
+  font-family: inherit;
+}
+.tab:hover { color: var(--copper); }
+.tab.active { color: var(--copper); border-bottom-color: var(--copper); font-weight: 600; }
+
+/* SECTIONS */
+section { padding: 48px 0; border-bottom: 1px solid var(--grey-100); }
+section:last-of-type { border-bottom: none; }
+section h2 {
+  font-size: 30px; margin-bottom: 12px; display: flex; align-items: baseline; gap: 14px;
+}
+section h2 .num-prefix { color: var(--copper); font-size: 16px; font-weight: 600; font-family: 'Inter'; letter-spacing: .04em; }
+section .lead { color: var(--grey-500); font-size: 16px; margin-bottom: 28px; max-width: 720px; }
+
+/* CARDS */
+.cards { display: grid; gap: 14px; }
+.cards.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.cards.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card {
+  background: white; padding: 20px 22px; border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.card h3 { font-size: 18px; margin-bottom: 8px; }
+.card .meta { font-size: 13px; color: var(--grey-500); }
+.card.green { border-left: 4px solid var(--green); }
+.card.yellow { border-left: 4px solid var(--yellow); }
+.card.red { border-left: 4px solid var(--red); }
+.card.copper { border-left: 4px solid var(--copper); }
+
+/* TABLES */
+table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+th, td { padding: 12px 16px; text-align: left; font-size: 14px; border-bottom: 1px solid var(--grey-100); }
+th { background: var(--cream-dark); font-weight: 600; color: var(--grey-700); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: var(--cream); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.badge.green { background: var(--green-light); color: var(--green); }
+.badge.yellow { background: var(--yellow-light); color: var(--yellow); }
+.badge.red { background: var(--red-light); color: var(--red); }
+.badge.grey { background: var(--grey-100); color: var(--grey-700); }
+.badge.copper { background: var(--copper-light); color: var(--copper-dark); }
+
+/* PROGRESS MINI */
+.bar-mini { background: var(--grey-100); height: 8px; border-radius: 4px; overflow: hidden; min-width: 80px; }
+.bar-mini-fill { height: 100%; background: var(--copper); }
+.bar-mini-fill.green { background: var(--green); }
+.bar-mini-fill.yellow { background: var(--yellow); }
+.bar-mini-fill.red { background: var(--red); }
+
+/* KANBAN */
+.kanban { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.kanban-col { background: var(--cream-dark); padding: 16px; border-radius: 12px; }
+.kanban-col h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--grey-700); font-family: 'Inter'; margin-bottom: 12px; font-weight: 600; }
+.kanban-task { background: white; padding: 12px 14px; border-radius: 8px; margin-bottom: 8px; box-shadow: var(--shadow); border-left: 3px solid var(--copper); }
+.kanban-task.green { border-left-color: var(--green); }
+.kanban-task.yellow { border-left-color: var(--yellow); }
+.kanban-task .title { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.kanban-task .meta { font-size: 11px; color: var(--grey-500); display: flex; gap: 10px; }
+
+/* DETAILS */
+details { margin-top: 12px; background: var(--cream-dark); padding: 14px 18px; border-radius: 8px; border-left: 3px solid var(--copper); }
+details summary { cursor: pointer; font-size: 13px; color: var(--grey-700); font-weight: 500; }
+details summary::after { content: " ▼"; color: var(--copper); font-size: 10px; }
+details[open] summary::after { content: " ▲"; }
+details .body { margin-top: 10px; font-size: 14px; color: var(--grey-700); line-height: 1.6; }
+
+/* FOOTER */
+.footer { padding: 32px 0; text-align: center; color: var(--grey-500); font-size: 13px; }
+.footer .timestamp { font-weight: 600; color: var(--copper); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .hero h1 { font-size: 30px; }
+  .hero { padding: 40px 0 64px; }
+  .kpi-bar { grid-template-columns: repeat(2, 1fr); margin-top: -36px; padding: 0 16px; }
+  .kpi-card .num { font-size: 22px; }
+  section { padding: 32px 0; }
+  section h2 { font-size: 22px; }
+  .cards.grid-2, .cards.grid-3 { grid-template-columns: 1fr; }
+  .kanban { grid-template-columns: 1fr; }
+  table { font-size: 12px; }
+  th, td { padding: 8px 10px; }
+  .tab { padding: 12px 12px; font-size: 13px; }
+}
+
+/* PRINT */
+@media print {
+  .tabs-wrap { display: none; }
+  body { padding-bottom: 0; }
+  section { page-break-inside: avoid; }
+}
+
+/* LOADING */
+.loading { text-align: center; padding: 100px 20px; color: var(--grey-500); }
+.error-banner { background: var(--red-light); color: var(--red); padding: 16px 20px; border-radius: 8px; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="loading">Загружаем данные…</div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    Дашборд обновляется автоматически раз в сутки в 09:00 МСК.
+    Последнее обновление: <span class="timestamp" id="footer-timestamp">—</span>
+  </div>
+</div>
+
+<script>
+const fmt = {
+  rub: n => new Intl.NumberFormat('ru-RU').format(Math.round(n || 0)) + ' ₽',
+  rubM: n => (n / 1_000_000).toFixed(1).replace('.', ',') + ' млн ₽',
+  rubK: n => (n / 1_000).toFixed(0) + 'К ₽',
+  pct: n => (n || 0).toFixed(1).replace('.', ',') + '%',
+  num: n => new Intl.NumberFormat('ru-RU').format(n || 0),
+  usd: n => '$' + (n || 0).toFixed(2),
+};
+
+const trafficLight = (status) => {
+  if (status === 'green' || status === 'ok') return 'green';
+  if (status === 'yellow') return 'yellow';
+  if (status === 'red' || status === 'error') return 'red';
+  return 'grey';
+};
+
+const balanceStatus = (balance, threshold) => {
+  if (balance == null) return 'grey';
+  if (balance < threshold * 0.3) return 'red';
+  if (balance < threshold) return 'yellow';
+  return 'green';
+};
+
+async function loadData() {
+  try {
+    const res = await fetch('data.json?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    render(data);
+  } catch (err) {
+    document.getElementById('app').innerHTML =
+      `<div class="container"><div class="error-banner">Ошибка загрузки данных: ${err.message}. Проверьте data.json.</div></div>`;
+  }
+}
+
+function render(d) {
+  const m = d.meta;
+  const p = d.progress;
+  const sp = d.sprint;
+  const html = `
+    <header class="hero">
+      <div class="container">
+        <h1>ФСЛ — Дашборд спринта</h1>
+        <div class="subtitle">Май–Июнь 2026 · сверхрезультат</div>
+        <div class="hero-meta">
+          <span><strong>День ${m.sprint_day}</strong> из ${m.sprint_total_days}</span>
+          <span>Сегодня: <strong>${m.today_human}</strong></span>
+          <span>До 15 мая: <strong>${m.days_to_review_15may > 0 ? m.days_to_review_15may + ' дн.' : 'прошло'}</strong></span>
+          <span>До 31 мая: <strong>${m.days_to_review_31may > 0 ? m.days_to_review_31may + ' дн.' : 'прошло'}</strong></span>
+        </div>
+        <div class="hero-target">
+          <span class="lbl">Цель спринта</span>
+          <span class="val">${fmt.rubM(sp.target_comfort_rub)}</span>
+          <span class="lbl">или рывок</span>
+          <span class="val">${fmt.rubM(sp.target_breakthrough_rub)}</span>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span>Прогресс к ${fmt.rubM(sp.target_comfort_rub)}</span>
+            <span><strong>${fmt.pct(p.pct_to_comfort)}</strong> · ${fmt.rubM(p.delta_rub)} из ${fmt.rubM(sp.delta_to_comfort_rub)}</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width: ${Math.max(0, Math.min(100, p.pct_to_comfort))}%"></div></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="kpi-bar">${renderKpi(d)}</div>
+
+    <nav class="tabs-wrap">
+      <div class="tabs">
+        <button class="tab active" data-target="channels">Каналы</button>
+        <button class="tab" data-target="tasks">Задачи</button>
+        <button class="tab" data-target="expenses">Расходы</button>
+        <button class="tab" data-target="ai-infra">AI-инфра</button>
+        <button class="tab" data-target="revenue">Доходы</button>
+        <button class="tab" data-target="content">Контент</button>
+        <button class="tab" data-target="team">Команда</button>
+        <button class="tab" data-target="questions">Вопросы Айрату</button>
+        <button class="tab" data-target="reviews">Точки пересмотра</button>
+        <button class="tab" data-target="assets">Что получаем</button>
+      </div>
+    </nav>
+
+    <main class="container">
+      ${renderChannels(d)}
+      ${renderTasks(d)}
+      ${renderExpenses(d)}
+      ${renderAiInfra(d)}
+      ${renderRevenue(d)}
+      ${renderContent(d)}
+      ${renderTeam(d)}
+      ${renderQuestions(d)}
+      ${renderReviews(d)}
+      ${renderAssets(d)}
+    </main>
+  `;
+  document.getElementById('app').innerHTML = html;
+  document.getElementById('footer-timestamp').textContent = m.updated_at_msk;
+  attachTabs();
+}
+
+function renderKpi(d) {
+  const p = d.progress, sp = d.sprint, lds = d.leads || {};
+  const ourLeads = lds.total_our_channels || 0;
+  const lpLeads = lds.lptracker_total || 0;
+  return `
+    <div class="kpi-card ${p.pct_to_comfort >= 50 ? 'green' : p.pct_to_comfort >= 25 ? 'yellow' : ''}">
+      <div class="num">${fmt.rubM(p.delta_rub)}</div>
+      <div class="lbl">Прирост к baseline</div>
+      <div class="sub">из ${fmt.rubM(sp.delta_to_comfort_rub)} цели</div>
+    </div>
+    <div class="kpi-card">
+      <div class="num">${fmt.num(ourLeads)}</div>
+      <div class="lbl">Заявок наших каналов</div>
+      <div class="sub">план май: ${fmt.num(lds.may_target_our)} · LP Tracker: ${lpLeads}</div>
+    </div>
+    <div class="kpi-card">
+      <div class="num">${fmt.num(d.deals_closed)}</div>
+      <div class="lbl">Сделок закрыто</div>
+      <div class="sub">план: 12–13 за май</div>
+    </div>
+    <div class="kpi-card">
+      <div class="num">${fmt.num(d.ai_content_counters.pins_published)}/${fmt.num(d.ai_content_counters.pins_target)}</div>
+      <div class="lbl">Пинов опубликовано</div>
+      <div class="sub">статей: ${d.ai_content_counters.articles_published}/${d.ai_content_counters.articles_target}</div>
+    </div>
+  `;
+}
+
+function renderChannels(d) {
+  const rows = (d.channels || []).map(ch => {
+    const pct = ch.may_target ? Math.round(100 * (ch.may_fact || 0) / ch.may_target) : 0;
+    const cls = pct >= 80 ? 'green' : pct >= 30 ? 'yellow' : 'red';
+    return `<tr>
+      <td><strong>${ch.name}</strong></td>
+      <td>${ch.owner || '—'}</td>
+      <td class="num">${fmt.num(ch.may_target)}</td>
+      <td class="num">${fmt.num(ch.may_fact)}</td>
+      <td><div class="bar-mini"><div class="bar-mini-fill ${cls}" style="width: ${Math.min(100, pct)}%"></div></div> <span class="badge ${cls}" style="margin-left:8px">${pct}%</span></td>
+      <td class="num">${ch.cpl_rub != null ? fmt.num(ch.cpl_rub) + ' ₽' : '—'}</td>
+      <td>${ch.blocker ? '<span class="badge red">' + ch.blocker + '</span>' : '<span class="badge green">ok</span>'}</td>
+    </tr>`;
+  }).join('');
+  return `
+    <section id="channels">
+      <h2><span class="num-prefix">01</span> 14 каналов лидов</h2>
+      <p class="lead">Я.Директ ведёт Вадим. Остальные 13 каналов — наша зона. Цель мая: 475 наших + 700 Я.Директ = 1175 заявок.</p>
+      <table>
+        <thead><tr><th>Канал</th><th>Владелец</th><th class="num">План май</th><th class="num">Факт</th><th>%</th><th class="num">CPL</th><th>Блокер</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <details><summary>Что значит CPL и почему в мае дороже июня</summary>
+        <div class="body">CPL (Cost Per Lead) — стоимость одной заявки. В мае средняя цена 1100 ₽: запускаем рекламу, тратим бюджет на тестирование, мало лидов. В июне 600 ₽: реклама уже оптимизирована, накопительный SEO даёт бесплатные лиды, Pinterest и Дзен работают «в плюс».</div>
+      </details>
+    </section>`;
+}
+
+function renderTasks(d) {
+  const t = d.tasks || {todo: [], doing: [], done: []};
+  const card = (task, cls = '') => `
+    <div class="kanban-task ${cls}">
+      <div class="title">${task.title}</div>
+      <div class="meta">
+        ${task.owner ? '<span>👤 ' + task.owner + '</span>' : ''}
+        ${task.deadline ? '<span>📅 ' + task.deadline + '</span>' : ''}
+        ${task.progress_pct != null ? '<span>' + task.progress_pct + '%</span>' : ''}
+      </div>
+      ${task.blocker ? '<div class="meta" style="color:var(--red);margin-top:4px">⚠ ' + task.blocker + '</div>' : ''}
+    </div>`;
+  return `
+    <section id="tasks">
+      <h2><span class="num-prefix">02</span> Задачи спринта</h2>
+      <p class="lead">Что в работе прямо сейчас. Виталий правит manual-input.json — Айрат видит обновлённую картину завтра в 09:00 МСК.</p>
+      <div class="kanban">
+        <div class="kanban-col">
+          <h3>К запуску · ${t.todo.length}</h3>
+          ${t.todo.map(x => card(x)).join('')}
+        </div>
+        <div class="kanban-col">
+          <h3>В работе · ${t.doing.length}</h3>
+          ${t.doing.map(x => card(x, 'yellow')).join('')}
+        </div>
+        <div class="kanban-col">
+          <h3>Готово · ${t.done.length}</h3>
+          ${t.done.map(x => card(x, 'green')).join('')}
+        </div>
+      </div>
+    </section>`;
+}
+
+function renderExpenses(d) {
+  const e = d.expenses_actual || {};
+  const items = [
+    {label: 'Реклама и подрядчики', plan: e.ads_partners_plan_rub, fact: e.ads_partners_rub},
+    {label: 'SEO (внешние ссылки + ПФ)', plan: e.seo_plan_rub, fact: e.seo_rub},
+    {label: 'Зарплаты команды', plan: e.salaries_plan_rub, fact: e.salaries_rub},
+    {label: 'Подписки и автоматизация', plan: e.subscriptions_plan_rub, fact: e.subscriptions_rub},
+    {label: 'Бонусы рекомендации + резерв', plan: e.bonuses_reserve_plan_rub, fact: e.bonuses_reserve_rub},
+  ];
+  const totalPlan = e.total_plan_rub || items.reduce((s, x) => s + (x.plan || 0), 0);
+  const totalFact = items.reduce((s, x) => s + (x.fact || 0), 0);
+  const rows = items.map(x => {
+    const pct = x.plan ? Math.round(100 * (x.fact || 0) / x.plan) : 0;
+    const cls = pct > 100 ? 'red' : pct > 80 ? 'yellow' : 'green';
+    return `<tr>
+      <td><strong>${x.label}</strong></td>
+      <td class="num">${fmt.num(x.plan)} ₽</td>
+      <td class="num">${fmt.num(x.fact)} ₽</td>
+      <td class="num">${fmt.num((x.plan || 0) - (x.fact || 0))} ₽</td>
+      <td><div class="bar-mini"><div class="bar-mini-fill ${cls}" style="width:${Math.min(100, pct)}%"></div></div> <span class="badge ${cls}" style="margin-left:8px">${pct}%</span></td>
+    </tr>`;
+  }).join('');
+  return `
+    <section id="expenses">
+      <h2><span class="num-prefix">03</span> Расходы — бюджет ${fmt.rubM(totalPlan)}</h2>
+      <p class="lead">Каждый рубль возвращается 11–12 рублями выручки. Я.Директ и производство — НЕ в этом бюджете.</p>
+      <table>
+        <thead><tr><th>Статья</th><th class="num">План</th><th class="num">Факт</th><th class="num">Остаток</th><th>Сжигание</th></tr></thead>
+        <tbody>${rows}</tbody>
+        <tfoot><tr><th>Итого</th><th class="num">${fmt.num(totalPlan)} ₽</th><th class="num">${fmt.num(totalFact)} ₽</th><th class="num">${fmt.num(totalPlan - totalFact)} ₽</th><th></th></tr></tfoot>
+      </table>
+    </section>`;
+}
+
+function renderAiInfra(d) {
+  const ai = d.ai_infra || {};
+  const kie = ai.kie_ai || {};
+  const or_ = ai.openrouter || {};
+  const lp = ai.lptracker || {};
+  const kieStatus = balanceStatus(kie.balance_usd, 15);
+  const orStatus = balanceStatus(or_.balance_usd, 5);
+  const cards = [
+    {title: 'kie.ai (картинки Pinterest)', balance: kie.balance_usd, status: kie.status, cls: kieStatus, hint: 'Nano Banana Pro · 6 кредитов = 1 пин · ' + (kie.balance_usd != null ? Math.floor(kie.balance_usd / 0.06) + ' пинов в остатке' : '—'), threshold: 'top-up рекомендован при <$15'},
+    {title: 'OpenRouter (тексты Hermes)', balance: or_.balance_usd, status: or_.status, cls: orStatus, hint: 'Hermes 4 70B · ~$0.0001/1K токенов · РФ-friendly', threshold: 'top-up при <$5'},
+    {title: 'Anthropic Claude API', balance: null, status: 'manual', cls: 'grey', hint: 'TG-бот ассистент, ~$5–15/мес. Расход через console.anthropic.com', threshold: 'ручной контроль'},
+    {title: 'VPS Beget Cloud (FSL Marketing)', balance: null, status: 'static', cls: 'green', hint: '93.189.228.176 · 22 ₽/день · n8n + tg-bot + Pinterest cron', threshold: 'auto-renew'},
+    {title: 'LP Tracker (CRM)', balance: lp.leads_total, status: lp.status, cls: lp.status === 'ok' ? 'green' : 'red', hint: 'Лиды в воронке project 177237: ' + (lp.leads_total != null ? lp.leads_total : '—'), threshold: '—'},
+    {title: 'Pinterest @fabrikamsk (через Make.com)', balance: null, status: 'static', cls: 'green', hint: 'OAuth-мост Make.com (1000 ops/мес Free)', threshold: 'upgrade при >150 пинов/мес'},
+  ];
+  const cardsHtml = cards.map(c => `
+    <div class="card ${c.cls}">
+      <h3>${c.title}</h3>
+      <div class="meta" style="margin-bottom:8px">${c.hint}</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <strong style="font-size:22px;color:var(--copper);font-family:'Playfair Display'">${
+          c.balance != null ? (typeof c.balance === 'number' && c.balance < 1000 ? fmt.usd(c.balance) : fmt.num(c.balance)) : '—'
+        }</strong>
+        <span class="badge ${c.cls}">${c.status}</span>
+      </div>
+      <div class="meta" style="margin-top:6px;font-size:11px">${c.threshold}</div>
+    </div>`).join('');
+  return `
+    <section id="ai-infra">
+      <h2><span class="num-prefix">04</span> AI-инфра — балансы и статусы</h2>
+      <p class="lead">Балансы AI-сервисов проверяются ежедневно. Жёлтый — пора пополнять. Красный — может встать pipeline.</p>
+      <div class="cards grid-3">${cardsHtml}</div>
+      <details><summary>Зачем эти сервисы</summary>
+        <div class="body">
+          <strong>kie.ai</strong> — генерирует картинки для пинов Pinterest (Nano Banana Pro). 6 кредитов = 1 пин.<br>
+          <strong>OpenRouter</strong> — тексты для пинов и сценариев БУЛАТ через Hermes 4 70B. РФ-friendly.<br>
+          <strong>Anthropic Claude API</strong> — TG-бот ассистент Виталия на VPS, отвечает голосом Sonnet 4.6.<br>
+          <strong>VPS Beget Cloud</strong> — собственный сервер где крутятся n8n, Pinterest pipeline, tg-bot.<br>
+          <strong>LP Tracker</strong> — CRM где входят все звонки и заявки с лендингов.<br>
+          <strong>Pinterest через Make.com</strong> — мост в Pinterest @fabrikamsk (РФ напрямую блокирует).
+        </div>
+      </details>
+    </section>`;
+}
+
+function renderRevenue(d) {
+  const r = d.revenue || {};
+  const weeks = (r.weeks || []).map(w =>
+    `<tr><td>${w.week}</td><td class="num">${fmt.rub(w.revenue_rub)}</td><td class="num">${w.deals}</td></tr>`
+  ).join('');
+  return `
+    <section id="revenue">
+      <h2><span class="num-prefix">05</span> Доходы и P&L</h2>
+      <p class="lead">Выручка по неделям спринта. Накопительно к ${fmt.rubM(d.sprint.target_comfort_rub)}.</p>
+      <table>
+        <thead><tr><th>Неделя</th><th class="num">Выручка</th><th class="num">Сделок</th></tr></thead>
+        <tbody>${weeks || '<tr><td colspan="3" style="text-align:center;color:var(--grey-500)">Данных по неделям пока нет</td></tr>'}</tbody>
+      </table>
+    </section>`;
+}
+
+function renderContent(d) {
+  const c = d.ai_content_counters || {};
+  const items = [
+    {label: 'Статьи на сайте', f: c.articles_published, t: c.articles_target},
+    {label: 'Пины Pinterest', f: c.pins_published, t: c.pins_target},
+    {label: 'Видео (Shorts/Reels/ВК)', f: c.videos_edited, t: c.videos_target},
+    {label: 'Письма дизайнерам', f: c.designer_letters_sent, t: c.designer_letters_target},
+    {label: 'Возвраты CRM-базы', f: c.crm_returns_processed, t: c.crm_returns_target},
+  ];
+  const cards = items.map(x => {
+    const pct = x.t ? Math.round(100 * (x.f || 0) / x.t) : 0;
+    const cls = pct >= 80 ? 'green' : pct >= 30 ? 'yellow' : 'red';
+    return `<div class="card ${cls}">
+      <h3>${x.label}</h3>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin:8px 0">
+        <strong style="font-size:24px;font-family:'Playfair Display'">${fmt.num(x.f)}</strong>
+        <span class="meta">из ${fmt.num(x.t)}</span>
+      </div>
+      <div class="bar-mini"><div class="bar-mini-fill ${cls}" style="width:${Math.min(100, pct)}%"></div></div>
+    </div>`;
+  }).join('');
+  return `
+    <section id="content">
+      <h2><span class="num-prefix">06</span> Контент-конвейер</h2>
+      <p class="lead">Что AI-сотрудники произвели за спринт. Эти материалы остаются у Айрата после 30.06.</p>
+      <div class="cards grid-3">${cards}</div>
+    </section>`;
+}
+
+function renderTeam(d) {
+  const h = d.hires || {};
+  const statusBadge = (s) => {
+    if (s === 'active') return '<span class="badge green">✓ работает</span>';
+    if (s === 'search') return '<span class="badge yellow">🔍 ищем</span>';
+    if (s === 'test') return '<span class="badge yellow">🤝 на тесте</span>';
+    if (s === 'left') return '<span class="badge red">❌ ушёл</span>';
+    return '<span class="badge grey">' + s + '</span>';
+  };
+  const rows = Object.entries(h).map(([key, x]) => `<tr>
+    <td><strong>${x.role}</strong></td>
+    <td>${fmt.num(x.salary_rub)} ₽${x.bonus_pct ? ' + ' + x.bonus_pct + '% дельты' : ''}</td>
+    <td>${statusBadge(x.status)}</td>
+    <td>${x.deadline || '—'}</td>
+    <td>${x.notes || ''}</td>
+  </tr>`).join('');
+  return `
+    <section id="team">
+      <h2><span class="num-prefix">07</span> Команда и найм</h2>
+      <p class="lead">3 найма + 2 помощника. Вся команда в спринте — узкопрофильные роли по парадигме «делегирование проблем».</p>
+      <table>
+        <thead><tr><th>Роль</th><th>Оклад</th><th>Статус</th><th>Дедлайн выхода</th><th>Что делает</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </section>`;
+}
+
+function renderQuestions(d) {
+  const q = d.questions_for_airat || [];
+  const items = q.map(x => `<div class="card ${x.priority === '🔴' ? 'red' : x.priority === '🟡' ? 'yellow' : 'green'}">
+    <h3>${x.priority} ${x.title}</h3>
+    <div class="meta">Дедлайн: ${x.deadline} · Статус: ${x.status === 'open' ? '🔄 ждём' : '✓ закрыто'}</div>
+  </div>`).join('');
+  return `
+    <section id="questions">
+      <h2><span class="num-prefix">08</span> Что нужно от Айрата</h2>
+      <p class="lead">Открытые вопросы и решения. Без них спринт затормозит — отметить дату принятия.</p>
+      <div class="cards grid-2">${items}</div>
+    </section>`;
+}
+
+function renderReviews(d) {
+  const r = d.review_points || [];
+  const today = d.meta.today_iso;
+  const items = r.map(x => {
+    const passed = today >= x.date;
+    const cls = x.current_status === 'green' ? 'green' : x.current_status === 'red' ? 'red' : 'yellow';
+    return `<div class="card ${cls}">
+      <h3>${x.date}${passed ? ' (прошло)' : ''}</h3>
+      <div class="meta" style="margin:8px 0"><strong>Если плохо:</strong> ${x.condition_kill}</div>
+      <div class="meta"><strong>Если ок:</strong> ${x.condition_continue}</div>
+      <div style="margin-top:10px"><span class="badge ${cls}">текущий статус: ${x.current_status}</span></div>
+    </div>`;
+  }).join('');
+  return `
+    <section id="reviews">
+      <h2><span class="num-prefix">09</span> Точки пересмотра</h2>
+      <p class="lead">Три контрольные даты. Если в красной зоне — корректируем тактику или активируем запасной план.</p>
+      <div class="cards grid-3">${items}</div>
+    </section>`;
+}
+
+function renderAssets(d) {
+  const items = [
+    '60 статей в Яндексе — бесплатный поток заявок годами',
+    '300+ пинов в Pinterest — каждый 4–6 мес работает',
+    '80+ роликов на YouTube Shorts / VK / Telegram',
+    '10–15 партнёров-дизайнеров с 10 % комиссией',
+    '5–10 партнёров-прорабов с 5–7 % комиссией',
+    'Онлайн-консультант 24/7 на 7 точках (metal-lestnica + 6 Tilda)',
+    '1042 контакта CRM прогретых акцией',
+    'Обученные менеджеры (после наставника)',
+    'Голосовой клон Айрата — для будущих видео без съёмок',
+    'Прогноз потока после спринта: 200–300 заявок/мес органически',
+  ];
+  const cards = items.map((x, i) => `<div class="card copper">
+    <h3 style="font-size:16px">${String(i + 1).padStart(2, '0')}. ${x}</h3>
+  </div>`).join('');
+  return `
+    <section id="assets">
+      <h2><span class="num-prefix">10</span> Что Айрат получает после спринта</h2>
+      <p class="lead">После 30.06 эти активы продолжают работать без дополнительных вложений. Это результат спринта в долгую.</p>
+      <div class="cards grid-2">${cards}</div>
+    </section>`;
+}
+
+function attachTabs() {
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const target = document.getElementById(t.dataset.target);
+    if (target) {
+      const offset = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({top: offset, behavior: 'smooth'});
+    }
+  }));
+}
+
+loadData();
+</script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+{
+  "meta": {
+    "today_iso": "2026-05-05",
+    "today_human": "05.05.2026",
+    "sprint_day": 5,
+    "sprint_total_days": 61,
+    "days_to_review_15may": 10,
+    "days_to_review_31may": 26,
+    "days_to_review_15jun": 41,
+    "updated_at_utc": "2026-05-05T10:33:17.249366+00:00",
+    "updated_at_msk": "2026-05-05 13:33 МСК",
+    "manual_input_edited": "2026-05-05"
+  },
+  "sprint": {
+    "start_date": "2026-05-01",
+    "end_date": "2026-06-30",
+    "baseline_rub": 48889000,
+    "target_comfort_rub": 70000000,
+    "target_breakthrough_rub": 80000000,
+    "delta_to_comfort_rub": 21111000,
+    "delta_to_breakthrough_rub": 31111000
+  },
+  "progress": {
+    "revenue_total_rub": 0,
+    "delta_rub": -48889000,
+    "pct_to_comfort": -231.6,
+    "pct_to_breakthrough": -157.1
+  },
+  "revenue": {
+    "sprint_total_rub": 0,
+    "weeks": [
+      {
+        "week": "01.05–04.05",
+        "revenue_rub": 0,
+        "deals": 0
+      }
+    ]
+  },
+  "deals_closed": 0,
+  "leads": {
+    "total_our_channels": 0,
+    "total_yandex_direct": 0,
+    "may_target_our": 475,
+    "may_target_yandex": 700,
+    "june_target_our": 750,
+    "june_target_yandex": 750,
+    "lptracker_total": 10
+  },
+  "channels": [
+    {
+      "name": "Я.Директ",
+      "owner": "Вадим",
+      "may_target": 700,
+      "may_fact": 0,
+      "cpl_rub": null,
+      "blocker": ""
+    },
+    {
+      "name": "Возврат базы CRM",
+      "owner": "Координатор",
+      "may_target": 200,
+      "may_fact": 0,
+      "cpl_rub": 150,
+      "blocker": "Найм координатора"
+    },
+    {
+      "name": "Pinterest органика",
+      "owner": "Сергей",
+      "may_target": 50,
+      "may_fact": 2,
+      "cpl_rub": 0,
+      "blocker": "kie.ai top-up"
+    },
+    {
+      "name": "Реклама ВК+TG",
+      "owner": "Подрядчик",
+      "may_target": 50,
+      "may_fact": 0,
+      "cpl_rub": 3000,
+      "blocker": "Подрядчик не выбран"
+    },
+    {
+      "name": "Avito подрядчик",
+      "owner": "Подрядчик",
+      "may_target": 30,
+      "may_fact": 0,
+      "cpl_rub": 1670,
+      "blocker": "Подрядчик не подключён"
+    },
+    {
+      "name": "Догоняющая ВК",
+      "owner": "Подрядчик",
+      "may_target": 30,
+      "may_fact": 0,
+      "cpl_rub": 2500,
+      "blocker": ""
+    },
+    {
+      "name": "Статьи + моностраницы",
+      "owner": "Сергей+Георгий",
+      "may_target": 30,
+      "may_fact": 0,
+      "cpl_rub": 500,
+      "blocker": "Топ-3 моностраницы не утверждены"
+    },
+    {
+      "name": "Дизайнеры (10%)",
+      "owner": "Виталий",
+      "may_target": 20,
+      "may_fact": 0,
+      "cpl_rub": null,
+      "blocker": "Партнёрка не запущена"
+    },
+    {
+      "name": "TG+ВК посты",
+      "owner": "Координатор",
+      "may_target": 10,
+      "may_fact": 0,
+      "cpl_rub": 100,
+      "blocker": ""
+    },
+    {
+      "name": "Прорабы (5–7%)",
+      "owner": "Виталий",
+      "may_target": 10,
+      "may_fact": 0,
+      "cpl_rub": null,
+      "blocker": ""
+    },
+    {
+      "name": "Дзен",
+      "owner": "Сергей+Георгий",
+      "may_target": 10,
+      "may_fact": 0,
+      "cpl_rub": 500,
+      "blocker": ""
+    },
+    {
+      "name": "Онлайн-консультант 24/7",
+      "owner": "Сергей",
+      "may_target": 30,
+      "may_fact": 0,
+      "cpl_rub": 200,
+      "blocker": "Бот не разработан"
+    },
+    {
+      "name": "Shorts/Reels/ВК-видео",
+      "owner": "Видеомонтажёр+БУЛАТ",
+      "may_target": 5,
+      "may_fact": 0,
+      "cpl_rub": 10000,
+      "blocker": "Найм монтажёра + согласие Айрата на голос"
+    },
+    {
+      "name": "ВК-видео длинные",
+      "owner": "Видеомонтажёр",
+      "may_target": 0,
+      "may_fact": 0,
+      "cpl_rub": null,
+      "blocker": "Старт в июне"
+    }
+  ],
+  "tasks": {
+    "todo": [
+      {
+        "title": "Найти координатора лидгена",
+        "owner": "Виталий",
+        "deadline": "2026-05-10",
+        "priority": "high"
+      },
+      {
+        "title": "Найти наставника менеджеров",
+        "owner": "Виталий",
+        "deadline": "2026-05-15",
+        "priority": "high"
+      },
+      {
+        "title": "Найти видеомонтажёра ГПХ",
+        "owner": "Виталий",
+        "deadline": "2026-05-12",
+        "priority": "high"
+      },
+      {
+        "title": "Связаться с подрядчиком Avito (40К/мес)",
+        "owner": "Виталий",
+        "deadline": "2026-05-08",
+        "priority": "high"
+      },
+      {
+        "title": "Связаться с подрядчиком ВК+TG Ads",
+        "owner": "Виталий",
+        "deadline": "2026-05-08",
+        "priority": "high"
+      },
+      {
+        "title": "Подготовить шаблон письма для дизайнеров",
+        "owner": "Claude",
+        "deadline": "2026-05-08",
+        "priority": "medium"
+      },
+      {
+        "title": "Подготовить шаблон возврата CRM-базы 1042 контакта",
+        "owner": "Claude",
+        "deadline": "2026-05-08",
+        "priority": "medium"
+      },
+      {
+        "title": "Аудит /vnutrennie-lestnicy + сравнение с master-lestnic.su",
+        "owner": "Виталий+Claude",
+        "deadline": "2026-05-15",
+        "priority": "medium"
+      },
+      {
+        "title": "Опубликовать первые 3 моностраницы",
+        "owner": "Сергей+Георгий",
+        "deadline": "2026-05-20",
+        "priority": "high"
+      },
+      {
+        "title": "Старт онлайн-консультанта на Claude Haiku + RAG",
+        "owner": "Сергей+Георгий",
+        "deadline": "2026-05-15",
+        "priority": "high"
+      }
+    ],
+    "doing": [
+      {
+        "title": "Pinterest pipeline pin_e2e.py — production cron",
+        "owner": "Claude",
+        "progress_pct": 80,
+        "blocker": "kie.ai top-up $15"
+      },
+      {
+        "title": "Marketing Machine «БУЛАТ» — calibration Phase 1.7",
+        "owner": "Claude",
+        "progress_pct": 60,
+        "blocker": "Согласие Айрата + VK/YT токены"
+      },
+      {
+        "title": "Дашборд для Айрата (этот файл)",
+        "owner": "Claude",
+        "progress_pct": 30,
+        "blocker": ""
+      }
+    ],
+    "done": [
+      {
+        "title": "План v2.3 финализирован 30.04",
+        "owner": "Виталий"
+      },
+      {
+        "title": "Baseline подтверждён собственником: 48 889 000 ₽",
+        "owner": "Айрат"
+      },
+      {
+        "title": "UTM injector v1.1.0 в проде (28.04)",
+        "owner": "Claude"
+      },
+      {
+        "title": "VPS Beget Cloud 93.189.228.176 развёрнут (02.05)",
+        "owner": "Claude"
+      },
+      {
+        "title": "TG-бот ассистент @volkovw_assist_bot Phase 1 (03.05)",
+        "owner": "Claude"
+      },
+      {
+        "title": "Pinterest 2 пина опубликованы (04–05.05)",
+        "owner": "Claude"
+      },
+      {
+        "title": "BUЛАТ Phase 1: структура + CLAUDE.md + 48 фото моделей",
+        "owner": "Claude"
+      }
+    ]
+  },
+  "hires": {
+    "coordinator": {
+      "role": "Координатор лидгена",
+      "salary_rub": 80000,
+      "bonus_pct": 1,
+      "status": "search",
+      "deadline": "2026-05-10",
+      "notes": "80К + 1% дельты"
+    },
+    "mentor": {
+      "role": "Наставник менеджеров",
+      "salary_rub": 80000,
+      "status": "search",
+      "deadline": "2026-05-15",
+      "notes": "2 ч/нед"
+    },
+    "video_editor": {
+      "role": "Видеомонтажёр ГПХ",
+      "salary_rub": 50000,
+      "status": "search",
+      "deadline": "2026-05-12",
+      "notes": "8–10 роликов/нед"
+    },
+    "sergey": {
+      "role": "Помощник по AI",
+      "salary_rub": 40000,
+      "status": "active",
+      "notes": "Бот, Дзен, статьи. Доплата за спринт"
+    },
+    "georgy": {
+      "role": "Помощник по AI",
+      "salary_rub": 40000,
+      "status": "active",
+      "notes": "Контент-конвейер, RAG"
+    }
+  },
+  "ai_content_counters": {
+    "articles_published": 0,
+    "articles_target": 60,
+    "pins_published": 0,
+    "pins_target": 300,
+    "videos_edited": 0,
+    "videos_target": 80,
+    "designer_letters_sent": 0,
+    "designer_letters_target": 100,
+    "crm_returns_processed": 0,
+    "crm_returns_target": 1042
+  },
+  "expenses_actual": {
+    "ads_partners_rub": 0,
+    "ads_partners_plan_rub": 670000,
+    "seo_rub": 0,
+    "seo_plan_rub": 140000,
+    "salaries_rub": 0,
+    "salaries_plan_rub": 700000,
+    "subscriptions_rub": 0,
+    "subscriptions_plan_rub": 130000,
+    "bonuses_reserve_rub": 0,
+    "bonuses_reserve_plan_rub": 250000,
+    "total_plan_rub": 1900000
+  },
+  "questions_for_airat": [
+    {
+      "priority": "🔴",
+      "title": "Утвердить бюджет 1,9 млн на спринт май-июнь",
+      "deadline": "2026-05-08",
+      "status": "open"
+    },
+    {
+      "priority": "🔴",
+      "title": "Согласие на голосовой клон для БУЛАТ (VK Клипы + YouTube Shorts)",
+      "deadline": "2026-05-12",
+      "status": "open"
+    },
+    {
+      "priority": "🟡",
+      "title": "Доступ к AmoCRM API (custom field IDs 135351–135361 уже знаем)",
+      "deadline": "2026-05-15",
+      "status": "open"
+    },
+    {
+      "priority": "🟡",
+      "title": "Утвердить топ-3 моностраницы из 10 для приоритетного запуска",
+      "deadline": "2026-05-10",
+      "status": "open"
+    },
+    {
+      "priority": "🟢",
+      "title": "Согласовать партнёрку 10% для дизайнеров интерьеров",
+      "deadline": "2026-05-15",
+      "status": "open"
+    },
+    {
+      "priority": "🟢",
+      "title": "Передать таймлапсы fsl-tl-1..4.mp4 + фото производства из Yandex Disk",
+      "deadline": "2026-05-15",
+      "status": "open"
+    },
+    {
+      "priority": "🟡",
+      "title": "Подтвердить план июня (если май <25М — корректируем)",
+      "deadline": "2026-05-31",
+      "status": "open"
+    }
+  ],
+  "review_points": [
+    {
+      "date": "2026-05-15",
+      "condition_kill": "<500 наших заявок за 2 нед",
+      "condition_continue": "≥500 наших заявок",
+      "current_status": "yellow"
+    },
+    {
+      "date": "2026-05-31",
+      "condition_kill": "выручка мая <25М",
+      "condition_continue": "выручка ≥25М",
+      "current_status": "yellow"
+    },
+    {
+      "date": "2026-06-15",
+      "condition_kill": "выручка июня ниже baseline 24,98М",
+      "condition_continue": "выручка ≥baseline",
+      "current_status": "yellow"
+    }
+  ],
+  "ai_infra": {
+    "kie_ai": {
+      "status": "ok",
+      "balance_usd": 4.0
+    },
+    "openrouter": {
+      "status": "ok",
+      "balance_usd": 4.8159,
+      "total": 5,
+      "used": 0.1840781
+    },
+    "lptracker": {
+      "status": "ok",
+      "leads_total": 10
+    }
+  }
+}
