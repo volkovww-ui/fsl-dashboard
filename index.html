@@ -280,8 +280,8 @@ function render(d) {
         </div>
         <div class="progress-wrap">
           <div class="progress-label">
-            <span>Прогресс к ${fmt.rubM(sp.target_comfort_rub)}</span>
-            <span><strong>${fmt.pct(p.pct_to_comfort)}</strong> · ${fmt.rubM(p.delta_rub)} из ${fmt.rubM(sp.delta_to_comfort_rub)}</span>
+            <span>Выручка спринта</span>
+            <span><strong>${fmt.pct(p.pct_to_comfort)}</strong> · ${fmt.rubM(p.revenue_total_rub)} из ${fmt.rubM(sp.target_comfort_rub)}</span>
           </div>
           <div class="progress-bar"><div class="progress-fill" style="width: ${Math.max(0, Math.min(100, p.pct_to_comfort))}%"></div></div>
         </div>
@@ -329,9 +329,9 @@ function renderKpi(d) {
   const lpLeads = lds.lptracker_total || 0;
   return `
     <div class="kpi-card ${p.pct_to_comfort >= 50 ? 'green' : p.pct_to_comfort >= 25 ? 'yellow' : ''}">
-      <div class="num">${fmt.rubM(p.delta_rub)}</div>
-      <div class="lbl">Прирост к baseline</div>
-      <div class="sub">из ${fmt.rubM(sp.delta_to_comfort_rub)} цели</div>
+      <div class="num">${fmt.rubM(p.revenue_total_rub)}</div>
+      <div class="lbl">Выручка спринта</div>
+      <div class="sub">из ${fmt.rubM(sp.target_comfort_rub)} · сверх baseline ${fmt.rubM(p.delta_above_baseline_rub)}</div>
     </div>
     <div class="kpi-card">
       <div class="num">${fmt.num(ourLeads)}</div>

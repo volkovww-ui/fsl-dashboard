@@ -186,12 +186,16 @@ def compute_sprint_meta(manual):
 def compute_progress(manual):
     sp = manual["sprint"]
     rev = manual["revenue"]
-    delta_now = rev["sprint_total_rub"] - sp["baseline_rub"]
-    pct_to_comfort = round(100 * delta_now / sp["delta_to_comfort_rub"], 1) if sp["delta_to_comfort_rub"] else 0
-    pct_to_breakthrough = round(100 * delta_now / sp["delta_to_breakthrough_rub"], 1) if sp["delta_to_breakthrough_rub"] else 0
+    revenue = rev["sprint_total_rub"]
+    # Прогресс — это накопительная выручка спринта к цели 70М/80М (а не дельта от baseline,
+    # которая отрицательна на старте). Дельта вычисляется отдельно и показывается только
+    # когда revenue >= baseline.
+    pct_to_comfort = round(100 * revenue / sp["target_comfort_rub"], 1) if sp["target_comfort_rub"] else 0
+    pct_to_breakthrough = round(100 * revenue / sp["target_breakthrough_rub"], 1) if sp["target_breakthrough_rub"] else 0
+    delta_above_baseline = max(0, revenue - sp["baseline_rub"])
     return {
-        "revenue_total_rub": rev["sprint_total_rub"],
-        "delta_rub": delta_now,
+        "revenue_total_rub": revenue,
+        "delta_above_baseline_rub": delta_above_baseline,
         "pct_to_comfort": pct_to_comfort,
         "pct_to_breakthrough": pct_to_breakthrough,
     }
