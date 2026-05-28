@@ -1,14 +1,14 @@
 {
   "meta": {
-    "today_iso": "2026-05-27",
-    "today_human": "27.05.2026",
-    "sprint_day": 27,
+    "today_iso": "2026-05-28",
+    "today_human": "28.05.2026",
+    "sprint_day": 28,
     "sprint_total_days": 61,
-    "days_to_review_15may": -12,
-    "days_to_review_31may": 4,
-    "days_to_review_15jun": 19,
-    "updated_at_utc": "2026-05-27T06:00:07.077179+00:00",
-    "updated_at_msk": "2026-05-27 09:00 МСК",
+    "days_to_review_15may": -13,
+    "days_to_review_31may": 3,
+    "days_to_review_15jun": 18,
+    "updated_at_utc": "2026-05-28T06:00:07.674989+00:00",
+    "updated_at_msk": "2026-05-28 09:00 МСК",
     "manual_input_edited": "2026-05-05"
   },
   "sprint": {
@@ -313,7 +313,7 @@
   "ai_content_counters": {
     "articles_published": 0,
     "articles_target": 60,
-    "pins_published": 108,
+    "pins_published": 111,
     "pins_target": 300,
     "videos_edited": 0,
     "videos_target": 80,
@@ -402,13 +402,13 @@
   "ai_infra": {
     "kie_ai": {
       "status": "ok",
-      "balance_usd": 68.0
+      "balance_usd": 14.0
     },
     "openrouter": {
       "status": "ok",
-      "balance_usd": 24.7058,
+      "balance_usd": 24.7027,
       "total": 25,
-      "used": 0.2942365
+      "used": 0.29730582
     },
     "lptracker": {
       "status": "ok",
