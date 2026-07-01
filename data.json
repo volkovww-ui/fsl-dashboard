@@ -1,14 +1,14 @@
 {
   "meta": {
-    "today_iso": "2026-06-30",
-    "today_human": "30.06.2026",
+    "today_iso": "2026-07-01",
+    "today_human": "01.07.2026",
     "sprint_day": 61,
     "sprint_total_days": 61,
-    "days_to_review_15may": -46,
-    "days_to_review_31may": -30,
-    "days_to_review_15jun": -15,
-    "updated_at_utc": "2026-06-30T06:00:08.642446+00:00",
-    "updated_at_msk": "2026-06-30 09:00 МСК",
+    "days_to_review_15may": -47,
+    "days_to_review_31may": -31,
+    "days_to_review_15jun": -16,
+    "updated_at_utc": "2026-07-01T06:00:06.324848+00:00",
+    "updated_at_msk": "2026-07-01 09:00 МСК",
     "manual_input_edited": "2026-05-05"
   },
   "sprint": {
@@ -406,9 +406,9 @@
     },
     "openrouter": {
       "status": "ok",
-      "balance_usd": 23.1302,
+      "balance_usd": 23.0602,
       "total": 25,
-      "used": 1.869814224
+      "used": 1.939803714
     },
     "lptracker": {
       "status": "ok",
