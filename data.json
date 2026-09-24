@@ -1,14 +1,14 @@
 {
   "meta": {
-    "today_iso": "2026-09-23",
-    "today_human": "23.09.2026",
+    "today_iso": "2026-09-24",
+    "today_human": "24.09.2026",
     "sprint_day": 61,
     "sprint_total_days": 61,
-    "days_to_review_15may": -131,
-    "days_to_review_31may": -115,
-    "days_to_review_15jun": -100,
-    "updated_at_utc": "2026-09-23T06:00:08.039640+00:00",
-    "updated_at_msk": "2026-09-23 09:00 МСК",
+    "days_to_review_15may": -132,
+    "days_to_review_31may": -116,
+    "days_to_review_15jun": -101,
+    "updated_at_utc": "2026-09-24T06:00:07.199390+00:00",
+    "updated_at_msk": "2026-09-24 09:00 МСК",
     "manual_input_edited": "2026-05-05"
   },
   "sprint": {
@@ -402,7 +402,7 @@
   "ai_infra": {
     "kie_ai": {
       "status": "ok",
-      "balance_usd": 630.0
+      "balance_usd": 576.0
     },
     "openrouter": {
       "status": "error",
