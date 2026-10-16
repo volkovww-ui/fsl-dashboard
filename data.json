@@ -1,14 +1,14 @@
 {
   "meta": {
-    "today_iso": "2026-10-15",
-    "today_human": "15.10.2026",
+    "today_iso": "2026-10-16",
+    "today_human": "16.10.2026",
     "sprint_day": 61,
     "sprint_total_days": 61,
-    "days_to_review_15may": -153,
-    "days_to_review_31may": -137,
-    "days_to_review_15jun": -122,
-    "updated_at_utc": "2026-10-15T06:00:06.066170+00:00",
-    "updated_at_msk": "2026-10-15 09:00 МСК",
+    "days_to_review_15may": -154,
+    "days_to_review_31may": -138,
+    "days_to_review_15jun": -123,
+    "updated_at_utc": "2026-10-16T06:00:06.743671+00:00",
+    "updated_at_msk": "2026-10-16 09:00 МСК",
     "manual_input_edited": "2026-05-05"
   },
   "sprint": {
